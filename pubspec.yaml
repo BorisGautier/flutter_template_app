@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.1
+  sdk: '>=3.9.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -60,7 +60,7 @@ dependencies:
   pinput: ^6.0.2
   flutter_markdown: ^0.7.7+1
   showcaseview: ^3.0.0
-  fl_chart: ^1.1.1
+  fl_chart: ^0.68.0
   confetti: ^0.8.0
 
   # === INTERNATIONALISATION ===
@@ -102,8 +102,10 @@ dependencies:
   opentelemetry: any
 
   # === SÉCURITÉ ===
-  freerasp: ^7.5.1
-  sqlcipher_flutter_libs: ^0.7.0+eol
+  # TODO: [TEMPLATE] Activer freerasp pour la détection root/jailbreak (requis Dart >=3.10)
+  # freerasp: ^7.5.1
+  # TODO: [TEMPLATE] Activer sqlcipher pour Drift chiffré (requis Dart >=3.10)
+  # sqlcipher_flutter_libs: ^0.7.0+eol
 
   # === ICÔNES ===
   cupertino_icons: ^1.0.8
@@ -113,11 +115,13 @@ dev_dependencies:
     sdk: flutter
 
   # === GÉNÉRATION DE CODE ===
+  # Les fichiers générés (*.g.dart, injection.config.dart) sont committés.
+  # Pour régénérer : dart run build_runner build --delete-conflicting-outputs
   build_runner: ^2.4.13
+  json_serializable: ^6.8.0
   injectable_generator: ^2.6.2
   chopper_generator: ^8.6.1
   drift_dev: ^2.21.2
-  json_serializable: ^6.8.0
 
   # === TESTS ===
   mocktail: ^1.0.4

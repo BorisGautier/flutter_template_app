@@ -1,5 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'di/injection.dart';
 import 'core/theme/app_theme.dart';
-import 'core/services/notification_service.dart';
 import 'routes/app_router.dart';
 import 'l10n/app_localizations.dart';
 

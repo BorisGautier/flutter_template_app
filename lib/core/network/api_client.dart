@@ -1,4 +1,4 @@
-import 'package:chopper/chopper.dart' hide HttpLoggingInterceptor;
+import 'package:chopper/chopper.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'interceptors.dart';
 import 'authenticator.dart';

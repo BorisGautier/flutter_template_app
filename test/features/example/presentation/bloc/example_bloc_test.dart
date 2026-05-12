@@ -5,8 +5,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template_app/core/error/failure.dart';
 import 'package:flutter_template_app/features/example/presentation/bloc/example_bloc.dart';
 
-import '../../../helpers/mocks.dart';
-import '../../../helpers/test_data.dart';
+import '../../../../helpers/mocks.dart';
+import '../../../../helpers/test_data.dart';
 
 void main() {
   late ExampleBloc bloc;

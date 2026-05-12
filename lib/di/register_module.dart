@@ -6,7 +6,6 @@ import 'package:logger/logger.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import 'package:flutter_template_app/core/network/api_client.dart';
-import 'package:flutter_template_app/di/injection.dart';
 
 // Rôle : Enregistre les dépendances tierces (non-injectable) dans GetIt.
 // TODO: [TEMPLATE] Ajouter ici vos services Chopper pour chaque feature.

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/constants/route_constants.dart';
 import '../features/example/presentation/pages/example_list_page.dart';

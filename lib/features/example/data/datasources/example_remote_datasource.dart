@@ -1,6 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../domain/entities/example_entity.dart';
 import '../models/example_model.dart';
 
 // Rôle : Source de données distante — appels API via Chopper.

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_template_app/di/injection.dart';
-import 'package:flutter_template_app/core/constants/route_constants.dart';
 import 'package:flutter_template_app/core/widgets/app_loading.dart';
 import 'package:flutter_template_app/core/widgets/app_error_view.dart';
 import '../bloc/example_bloc.dart';

@@ -2,11 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_template_app/features/example/data/models/example_model.dart';
 import 'package:flutter_template_app/features/example/domain/entities/example_entity.dart';
 
-import '../../../helpers/test_data.dart';
+import '../../../../helpers/test_data.dart';
 
 void main() {
-  final tDateTime = DateTime(2024, 1, 1);
-
   group('ExampleModel', () {
     final tJson = {
       'id': 'test-id-1',

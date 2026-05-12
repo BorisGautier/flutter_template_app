@@ -4,8 +4,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template_app/core/error/failure.dart';
 import 'package:flutter_template_app/features/example/data/repositories/example_repository_impl.dart';
 
-import '../../../helpers/mocks.dart';
-import '../../../helpers/test_data.dart';
+import '../../../../helpers/mocks.dart';
+import '../../../../helpers/test_data.dart';
 
 void main() {
   late ExampleRepositoryImpl repository;
@@ -59,7 +59,11 @@ void main() {
 
         final result = await repository.getExamples();
 
-        expect(result, right([]));
+        expect(result.isRight(), isTrue);
+        result.fold(
+          (_) => fail('Should have returned data'),
+          (entities) => expect(entities, isEmpty),
+        );
       });
     });
 
