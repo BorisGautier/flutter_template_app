@@ -15,16 +15,13 @@ class ExampleListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final effectiveBloc = bloc ?? getIt<ExampleBloc>();
-    
+
     // Si on utilise le bloc du getIt, on lance l'initialisation
     if (bloc == null) {
       effectiveBloc.add(const GetExamplesRequested());
     }
 
-    return BlocProvider.value(
-      value: effectiveBloc,
-      child: const _ExampleListView(),
-    );
+    return BlocProvider.value(value: effectiveBloc, child: const _ExampleListView());
   }
 }
 

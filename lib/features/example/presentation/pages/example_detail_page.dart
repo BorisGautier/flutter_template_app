@@ -8,11 +8,7 @@ class ExampleDetailPage extends StatelessWidget {
   final String itemId;
   final ExampleBloc? bloc;
 
-  const ExampleDetailPage({
-    super.key,
-    required this.itemId,
-    this.bloc,
-  });
+  const ExampleDetailPage({super.key, required this.itemId, this.bloc});
 
   @override
   Widget build(BuildContext context) {

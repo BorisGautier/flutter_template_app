@@ -29,7 +29,9 @@ void main() {
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(
-        MaterialApp(home: ExampleDetailPage(itemId: TestData.tExampleEntity.id, bloc: mockBloc)),
+        MaterialApp(
+          home: ExampleDetailPage(itemId: TestData.tExampleEntity.id, bloc: mockBloc),
+        ),
       );
 
       expect(find.text(TestData.tExampleEntity.title), findsOneWidget);
@@ -43,7 +45,9 @@ void main() {
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(
-        MaterialApp(home: ExampleDetailPage(itemId: TestData.tExampleEntity2.id, bloc: mockBloc)),
+        MaterialApp(
+          home: ExampleDetailPage(itemId: TestData.tExampleEntity2.id, bloc: mockBloc),
+        ),
       );
 
       expect(find.text(TestData.tExampleEntity2.title), findsOneWidget);
@@ -57,7 +61,11 @@ void main() {
       ).thenReturn(const ExampleState(status: ExampleStatus.success, items: []));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
-      await tester.pumpWidget(MaterialApp(home: ExampleDetailPage(itemId: 'id-inexistant', bloc: mockBloc)));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ExampleDetailPage(itemId: 'id-inexistant', bloc: mockBloc),
+        ),
+      );
 
       expect(find.text('Element non trouvé'), findsOneWidget);
     });
@@ -66,7 +74,11 @@ void main() {
       when(() => mockBloc.state).thenReturn(const ExampleState(status: ExampleStatus.initial));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
-      await tester.pumpWidget(MaterialApp(home: ExampleDetailPage(itemId: 'test-id-1', bloc: mockBloc)));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ExampleDetailPage(itemId: 'test-id-1', bloc: mockBloc),
+        ),
+      );
 
       expect(find.text('Element non trouvé'), findsOneWidget);
     });
