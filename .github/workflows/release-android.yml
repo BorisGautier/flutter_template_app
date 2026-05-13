@@ -82,7 +82,19 @@ jobs:
 
       # ── Upload to Play Store ──
       # Secret requis : PLAY_STORE_SERVICE_ACCOUNT_JSON (JSON du compte de service)
-      - name: Upload to Google Play
+      # mappingFile : uniquement si R8/ProGuard est activé dans build.gradle.kts
+      #   Pour l'activer : minifyEnabled = true dans buildTypes { release { ... } }
+      - name: Check if mapping file exists
+        id: mapping
+        run: |
+          if [ -f "build/app/outputs/mapping/release/mapping.txt" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload to Google Play (with mapping)
+        if: steps.mapping.outputs.exists == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT_JSON }}
@@ -91,6 +103,16 @@ jobs:
           track: ${{ inputs.track || 'internal' }}
           status: completed
           mappingFile: build/app/outputs/mapping/release/mapping.txt
+
+      - name: Upload to Google Play (without mapping)
+        if: steps.mapping.outputs.exists == 'false'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ vars.ANDROID_PACKAGE_NAME }}
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: ${{ inputs.track || 'internal' }}
+          status: completed
 
       # ── Créer une GitHub Release ──
       - name: Extract version
