@@ -33,6 +33,9 @@ linter:
     prefer_is_not_empty: true
     unnecessary_this: true
 
+    # Imports
+    always_use_package_imports: true
+
     # Const
     prefer_const_constructors: true
     prefer_const_constructors_in_immutables: true

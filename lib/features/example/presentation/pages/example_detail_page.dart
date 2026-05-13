@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template_app/di/injection.dart';
-import '../bloc/example_bloc.dart';
+import 'package:flutter_template_app/features/example/presentation/bloc/example_bloc.dart';
 
 // Rôle : Page de détail de la feature example.
 class ExampleDetailPage extends StatelessWidget {
   final String itemId;
+  final ExampleBloc? bloc;
 
-  const ExampleDetailPage({super.key, required this.itemId});
+  const ExampleDetailPage({
+    super.key,
+    required this.itemId,
+    this.bloc,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<ExampleBloc>(),
+      value: bloc ?? getIt<ExampleBloc>(),
       child: Scaffold(
         appBar: AppBar(title: const Text('Détail')),
         body: BlocBuilder<ExampleBloc, ExampleState>(

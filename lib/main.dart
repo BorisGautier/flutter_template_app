@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'di/injection.dart';
-import 'core/theme/app_theme.dart';
-import 'routes/app_router.dart';
-import 'l10n/app_localizations.dart';
+import 'package:flutter_template_app/di/injection.dart';
+import 'package:flutter_template_app/core/theme/app_theme.dart';
+import 'package:flutter_template_app/routes/app_router.dart';
+import 'package:flutter_template_app/l10n/app_localizations.dart';
 
 // TODO: [TEMPLATE] Importer firebase_options.dart généré par FlutterFire CLI
 // import 'firebase_options.dart';

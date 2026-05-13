@@ -2,9 +2,9 @@ import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_template_app/core/error/failure.dart';
 import 'package:flutter_template_app/core/network/network_info.dart';
-import '../../domain/entities/example_entity.dart';
-import '../../domain/repositories/example_repository.dart';
-import '../datasources/example_remote_datasource.dart';
+import 'package:flutter_template_app/features/example/domain/entities/example_entity.dart';
+import 'package:flutter_template_app/features/example/domain/repositories/example_repository.dart';
+import 'package:flutter_template_app/features/example/data/datasources/example_remote_datasource.dart';
 
 // Rôle : Implémentation du contrat ExampleRepository.
 // Coordonne les datasources (remote/local) et transforme les échecs en Failure.

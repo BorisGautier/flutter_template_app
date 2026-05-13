@@ -23,7 +23,7 @@ void main() {
 
   tearDown(getIt.reset);
 
-  Widget buildApp() => const MaterialApp(home: ExampleListPage());
+  Widget buildApp() => MaterialApp(home: ExampleListPage(bloc: mockBloc));
 
   group('ExampleListPage', () {
     testWidgets('affiche AppLoading quand le statut est initial', (tester) async {

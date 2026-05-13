@@ -4,16 +4,25 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_template_app/di/injection.dart';
 import 'package:flutter_template_app/core/widgets/app_loading.dart';
 import 'package:flutter_template_app/core/widgets/app_error_view.dart';
-import '../bloc/example_bloc.dart';
+import 'package:flutter_template_app/features/example/presentation/bloc/example_bloc.dart';
 
 // Rôle : Page principale de la feature example. Illustre le pattern BLoC complet.
 class ExampleListPage extends StatelessWidget {
-  const ExampleListPage({super.key});
+  final ExampleBloc? bloc;
+
+  const ExampleListPage({super.key, this.bloc});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<ExampleBloc>()..add(const GetExamplesRequested()),
+    final effectiveBloc = bloc ?? getIt<ExampleBloc>();
+    
+    // Si on utilise le bloc du getIt, on lance l'initialisation
+    if (bloc == null) {
+      effectiveBloc.add(const GetExamplesRequested());
+    }
+
+    return BlocProvider.value(
+      value: effectiveBloc,
       child: const _ExampleListView(),
     );
   }
