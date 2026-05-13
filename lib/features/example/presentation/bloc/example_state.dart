@@ -13,11 +13,7 @@ class ExampleState extends Equatable {
     this.errorMessage,
   });
 
-  ExampleState copyWith({
-    ExampleStatus? status,
-    List<ExampleEntity>? items,
-    String? errorMessage,
-  }) {
+  ExampleState copyWith({ExampleStatus? status, List<ExampleEntity>? items, String? errorMessage}) {
     return ExampleState(
       status: status ?? this.status,
       items: items ?? this.items,

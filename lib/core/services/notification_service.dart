@@ -9,16 +9,11 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class NotificationService {
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin _localNotifications =
-      FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _localNotifications = FlutterLocalNotificationsPlugin();
 
   Future<void> initialize() async {
     // Demande de permission
-    await _messaging.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+    await _messaging.requestPermission(alert: true, badge: true, sound: true);
 
     // Configuration des notifications locales Android
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');

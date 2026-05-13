@@ -24,6 +24,5 @@ abstract class RegisterModule {
   Logger get logger => Logger();
 
   @lazySingleton
-  InternetConnectionChecker get connectionChecker =>
-      InternetConnectionChecker.createInstance();
+  InternetConnectionChecker get connectionChecker => InternetConnectionChecker.createInstance();
 }

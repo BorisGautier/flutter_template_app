@@ -39,7 +39,10 @@ class ExampleRepositoryImpl implements ExampleRepository {
   }
 
   @override
-  Future<Either<Failure, ExampleEntity>> createExample({required String title, required String description}) async {
+  Future<Either<Failure, ExampleEntity>> createExample({
+    required String title,
+    required String description,
+  }) async {
     try {
       final model = await _remoteDataSource.createExample(title: title, description: description);
       return right(model.toEntity());

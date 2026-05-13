@@ -78,6 +78,8 @@ class _AppBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    debugPrint('[BLoC] ${bloc.runtimeType}: ${transition.event.runtimeType} -> ${transition.nextState.runtimeType}');
+    debugPrint(
+      '[BLoC] ${bloc.runtimeType}: ${transition.event.runtimeType} -> ${transition.nextState.runtimeType}',
+    );
   }
 }

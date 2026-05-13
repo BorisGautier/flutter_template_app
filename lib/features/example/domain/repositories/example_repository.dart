@@ -7,6 +7,9 @@ import '../entities/example_entity.dart';
 abstract class ExampleRepository {
   Future<Either<Failure, List<ExampleEntity>>> getExamples();
   Future<Either<Failure, ExampleEntity>> getExampleById(String id);
-  Future<Either<Failure, ExampleEntity>> createExample({required String title, required String description});
+  Future<Either<Failure, ExampleEntity>> createExample({
+    required String title,
+    required String description,
+  });
   Future<Either<Failure, void>> deleteExample(String id);
 }

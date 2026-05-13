@@ -13,9 +13,24 @@ class ExampleRemoteDataSource {
   Future<List<ExampleModel>> getExamples() async {
     await Future.delayed(const Duration(milliseconds: 800));
     return [
-      ExampleModel(id: '1', title: 'Exemple A', description: 'Description de l\'exemple A', createdAt: DateTime.now()),
-      ExampleModel(id: '2', title: 'Exemple B', description: 'Description de l\'exemple B', createdAt: DateTime.now().subtract(const Duration(days: 1))),
-      ExampleModel(id: '3', title: 'Exemple C', description: 'Description de l\'exemple C', createdAt: DateTime.now().subtract(const Duration(days: 2))),
+      ExampleModel(
+        id: '1',
+        title: 'Exemple A',
+        description: 'Description de l\'exemple A',
+        createdAt: DateTime.now(),
+      ),
+      ExampleModel(
+        id: '2',
+        title: 'Exemple B',
+        description: 'Description de l\'exemple B',
+        createdAt: DateTime.now().subtract(const Duration(days: 1)),
+      ),
+      ExampleModel(
+        id: '3',
+        title: 'Exemple C',
+        description: 'Description de l\'exemple C',
+        createdAt: DateTime.now().subtract(const Duration(days: 2)),
+      ),
     ];
   }
 
@@ -26,6 +41,11 @@ class ExampleRemoteDataSource {
 
   Future<ExampleModel> createExample({required String title, required String description}) async {
     await Future.delayed(const Duration(milliseconds: 500));
-    return ExampleModel(id: DateTime.now().millisecondsSinceEpoch.toString(), title: title, description: description, createdAt: DateTime.now());
+    return ExampleModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: title,
+      description: description,
+      createdAt: DateTime.now(),
+    );
   }
 }

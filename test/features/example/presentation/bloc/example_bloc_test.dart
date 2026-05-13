@@ -59,8 +59,7 @@ void main() {
     blocTest<ExampleBloc, ExampleState>(
       'emit [loading, failure] when use case returns ServerFailure',
       build: () {
-        when(() => mockUseCase())
-            .thenAnswer((_) async => left(const ServerFailure('Erreur API')));
+        when(() => mockUseCase()).thenAnswer((_) async => left(const ServerFailure('Erreur API')));
         return bloc;
       },
       act: (b) => b.add(const GetExamplesRequested()),
@@ -73,8 +72,9 @@ void main() {
     blocTest<ExampleBloc, ExampleState>(
       'emit [loading, failure] when use case returns NetworkFailure',
       build: () {
-        when(() => mockUseCase())
-            .thenAnswer((_) async => left(const NetworkFailure('Pas de réseau')));
+        when(
+          () => mockUseCase(),
+        ).thenAnswer((_) async => left(const NetworkFailure('Pas de réseau')));
         return bloc;
       },
       act: (b) => b.add(const GetExamplesRequested()),
@@ -132,7 +132,10 @@ void main() {
 
     test('copyWith should update only specified fields', () {
       const initial = ExampleState(status: ExampleStatus.loading);
-      final updated = initial.copyWith(status: ExampleStatus.success, items: TestData.tExampleEntities);
+      final updated = initial.copyWith(
+        status: ExampleStatus.success,
+        items: TestData.tExampleEntities,
+      );
       expect(updated.status, ExampleStatus.success);
       expect(updated.items, TestData.tExampleEntities);
       expect(updated.errorMessage, isNull);

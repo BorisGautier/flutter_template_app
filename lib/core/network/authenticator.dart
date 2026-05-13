@@ -9,7 +9,11 @@ class AppAuthenticator extends Authenticator {
   final _storage = const FlutterSecureStorage();
 
   @override
-  FutureOr<Request?> authenticate(Request request, Response response, [Request? originalRequest]) async {
+  FutureOr<Request?> authenticate(
+    Request request,
+    Response response, [
+    Request? originalRequest,
+  ]) async {
     if (response.statusCode == 401) {
       final refreshToken = await _storage.read(key: 'refresh_token');
       if (refreshToken == null) return null;

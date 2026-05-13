@@ -13,10 +13,7 @@ class JsonToTypeConverter extends JsonConverter {
   @override
   Response<BodyType> convertResponse<BodyType, InnerType>(Response response) {
     return response.copyWith<BodyType>(
-      body: fromJsonData<BodyType, InnerType>(
-        response.body,
-        factories[InnerType],
-      ),
+      body: fromJsonData<BodyType, InnerType>(response.body, factories[InnerType]),
     );
   }
 

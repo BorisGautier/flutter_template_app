@@ -23,12 +23,8 @@ class ExampleModel {
   factory ExampleModel.fromJson(Map<String, dynamic> json) => _$ExampleModelFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleModelToJson(this);
 
-  ExampleEntity toEntity() => ExampleEntity(
-    id: id,
-    title: title,
-    description: description,
-    createdAt: createdAt,
-  );
+  ExampleEntity toEntity() =>
+      ExampleEntity(id: id, title: title, description: description, createdAt: createdAt);
 
   static ExampleModel fromEntity(ExampleEntity entity) => ExampleModel(
     id: entity.id,

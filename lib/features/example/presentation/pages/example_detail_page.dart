@@ -28,7 +28,10 @@ class ExampleDetailPage extends StatelessWidget {
                 children: [
                   Text(item.title, style: Theme.of(context).textTheme.headlineSmall),
                   const SizedBox(height: 8),
-                  Text('Créé le ${item.createdAt.toLocal()}', style: Theme.of(context).textTheme.bodySmall),
+                  Text(
+                    'Créé le ${item.createdAt.toLocal()}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                   const SizedBox(height: 16),
                   Text(item.description, style: Theme.of(context).textTheme.bodyLarge),
                 ],

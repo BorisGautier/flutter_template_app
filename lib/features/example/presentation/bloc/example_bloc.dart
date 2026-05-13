@@ -23,7 +23,8 @@ class ExampleBloc extends Bloc<ExampleEvent, ExampleState> {
     emit(state.copyWith(status: ExampleStatus.loading));
     final result = await _getExamples();
     result.fold(
-      (failure) => emit(state.copyWith(status: ExampleStatus.failure, errorMessage: failure.message)),
+      (failure) =>
+          emit(state.copyWith(status: ExampleStatus.failure, errorMessage: failure.message)),
       (items) => emit(state.copyWith(status: ExampleStatus.success, items: items)),
     );
   }

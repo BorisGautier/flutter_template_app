@@ -21,10 +21,17 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final child = isLoading
-        ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+        ? const SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+          )
         : icon != null
-            ? Row(mainAxisSize: MainAxisSize.min, children: [icon!, const SizedBox(width: 8), Text(label)])
-            : Text(label);
+        ? Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [icon!, const SizedBox(width: 8), Text(label)],
+          )
+        : Text(label);
 
     if (isOutlined) {
       return OutlinedButton(onPressed: isLoading ? null : onPressed, child: child);

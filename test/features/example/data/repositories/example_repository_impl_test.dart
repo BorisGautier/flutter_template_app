@@ -25,20 +25,16 @@ void main() {
       });
 
       test('should return list of entities when remote call succeeds', () async {
-        when(() => mockRemote.getExamples())
-            .thenAnswer((_) async => TestData.tExampleModels);
+        when(() => mockRemote.getExamples()).thenAnswer((_) async => TestData.tExampleModels);
 
         final result = await repository.getExamples();
 
         expect(result.isRight(), isTrue);
-        result.fold(
-          (_) => fail('Should have returned data'),
-          (entities) {
-            expect(entities.length, TestData.tExampleModels.length);
-            expect(entities.first.id, TestData.tExampleModels.first.id);
-            expect(entities.first.title, TestData.tExampleModels.first.title);
-          },
-        );
+        result.fold((_) => fail('Should have returned data'), (entities) {
+          expect(entities.length, TestData.tExampleModels.length);
+          expect(entities.first.id, TestData.tExampleModels.first.id);
+          expect(entities.first.title, TestData.tExampleModels.first.title);
+        });
         verify(() => mockRemote.getExamples()).called(1);
       });
 
@@ -87,8 +83,7 @@ void main() {
 
   group('getExampleById', () {
     test('should return entity when remote call succeeds', () async {
-      when(() => mockRemote.getExampleById(any()))
-          .thenAnswer((_) async => TestData.tExampleModel);
+      when(() => mockRemote.getExampleById(any())).thenAnswer((_) async => TestData.tExampleModel);
 
       final result = await repository.getExampleById('test-id-1');
 
@@ -110,8 +105,12 @@ void main() {
 
   group('createExample', () {
     test('should return created entity on success', () async {
-      when(() => mockRemote.createExample(title: any(named: 'title'), description: any(named: 'description')))
-          .thenAnswer((_) async => TestData.tExampleModel);
+      when(
+        () => mockRemote.createExample(
+          title: any(named: 'title'),
+          description: any(named: 'description'),
+        ),
+      ).thenAnswer((_) async => TestData.tExampleModel);
 
       final result = await repository.createExample(title: 'New', description: 'Desc');
 
@@ -119,8 +118,12 @@ void main() {
     });
 
     test('should return ServerFailure on exception', () async {
-      when(() => mockRemote.createExample(title: any(named: 'title'), description: any(named: 'description')))
-          .thenThrow(Exception('creation failed'));
+      when(
+        () => mockRemote.createExample(
+          title: any(named: 'title'),
+          description: any(named: 'description'),
+        ),
+      ).thenThrow(Exception('creation failed'));
 
       final result = await repository.createExample(title: 'New', description: 'Desc');
 

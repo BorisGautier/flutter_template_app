@@ -15,10 +15,7 @@ class AppApiClient {
 
     return ChopperClient(
       baseUrl: Uri.parse(baseUrl),
-      interceptors: [
-        AuthInterceptor(),
-        HttpLoggingInterceptor(),
-      ],
+      interceptors: [AuthInterceptor(), HttpLoggingInterceptor()],
       authenticator: AppAuthenticator(),
       converter: JsonToTypeConverter({
         // TODO: [TEMPLATE] Enregistrer ici vos modèles de réponse JSON

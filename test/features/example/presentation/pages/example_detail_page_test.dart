@@ -8,8 +8,7 @@ import 'package:flutter_template_app/features/example/presentation/pages/example
 
 import '../../../../helpers/test_data.dart';
 
-class _MockExampleBloc extends MockBloc<ExampleEvent, ExampleState>
-    implements ExampleBloc {}
+class _MockExampleBloc extends MockBloc<ExampleEvent, ExampleState> implements ExampleBloc {}
 
 void main() {
   late _MockExampleBloc mockBloc;
@@ -23,21 +22,14 @@ void main() {
   tearDown(getIt.reset);
 
   group('ExampleDetailPage', () {
-    testWidgets(
-        'affiche le titre et la description de l\'élément trouvé',
-        (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        ExampleState(
-          status: ExampleStatus.success,
-          items: TestData.tExampleEntities,
-        ),
-      );
+    testWidgets('affiche le titre et la description de l\'élément trouvé', (tester) async {
+      when(
+        () => mockBloc.state,
+      ).thenReturn(ExampleState(status: ExampleStatus.success, items: TestData.tExampleEntities));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: ExampleDetailPage(itemId: TestData.tExampleEntity.id),
-        ),
+        MaterialApp(home: ExampleDetailPage(itemId: TestData.tExampleEntity.id)),
       );
 
       expect(find.text(TestData.tExampleEntity.title), findsOneWidget);
@@ -45,18 +37,13 @@ void main() {
     });
 
     testWidgets('affiche le bon élément parmi plusieurs', (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        ExampleState(
-          status: ExampleStatus.success,
-          items: TestData.tExampleEntities,
-        ),
-      );
+      when(
+        () => mockBloc.state,
+      ).thenReturn(ExampleState(status: ExampleStatus.success, items: TestData.tExampleEntities));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: ExampleDetailPage(itemId: TestData.tExampleEntity2.id),
-        ),
+        MaterialApp(home: ExampleDetailPage(itemId: TestData.tExampleEntity2.id)),
       );
 
       expect(find.text(TestData.tExampleEntity2.title), findsOneWidget);
@@ -64,36 +51,22 @@ void main() {
       expect(find.text(TestData.tExampleEntity.title), findsNothing);
     });
 
-    testWidgets('affiche "Element non trouvé" si l\'id est absent',
-        (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        const ExampleState(
-          status: ExampleStatus.success,
-          items: [],
-        ),
-      );
+    testWidgets('affiche "Element non trouvé" si l\'id est absent', (tester) async {
+      when(
+        () => mockBloc.state,
+      ).thenReturn(const ExampleState(status: ExampleStatus.success, items: []));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: ExampleDetailPage(itemId: 'id-inexistant'),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: ExampleDetailPage(itemId: 'id-inexistant')));
 
       expect(find.text('Element non trouvé'), findsOneWidget);
     });
 
-    testWidgets('affiche "Element non trouvé" quand la liste est vide',
-        (tester) async {
-      when(() => mockBloc.state)
-          .thenReturn(const ExampleState(status: ExampleStatus.initial));
+    testWidgets('affiche "Element non trouvé" quand la liste est vide', (tester) async {
+      when(() => mockBloc.state).thenReturn(const ExampleState(status: ExampleStatus.initial));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: ExampleDetailPage(itemId: 'test-id-1'),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: ExampleDetailPage(itemId: 'test-id-1')));
 
       expect(find.text('Element non trouvé'), findsOneWidget);
     });

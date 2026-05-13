@@ -20,17 +20,15 @@ abstract class AppLocalizations {
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ];
 
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('fr'),
-    Locale('en'),
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('fr'), Locale('en')];
 
   // === Communs ===
   String get appName;
@@ -94,8 +92,10 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
-    case 'fr': return AppLocalizationsFr();
-    case 'en': return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'en':
+      return AppLocalizationsEn();
   }
   throw FlutterError('AppLocalizations delegate failed to load unsupported locale "$locale".');
 }

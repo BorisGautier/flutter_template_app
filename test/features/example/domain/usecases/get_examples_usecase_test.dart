@@ -18,8 +18,9 @@ void main() {
 
   group('GetExamplesUseCase', () {
     test('should return list of ExampleEntity when repository succeeds', () async {
-      when(() => mockRepository.getExamples())
-          .thenAnswer((_) async => right(TestData.tExampleEntities));
+      when(
+        () => mockRepository.getExamples(),
+      ).thenAnswer((_) async => right(TestData.tExampleEntities));
 
       final result = await useCase();
 
@@ -29,8 +30,9 @@ void main() {
     });
 
     test('should return ServerFailure when repository fails', () async {
-      when(() => mockRepository.getExamples())
-          .thenAnswer((_) async => left(const ServerFailure('Erreur API')));
+      when(
+        () => mockRepository.getExamples(),
+      ).thenAnswer((_) async => left(const ServerFailure('Erreur API')));
 
       final result = await useCase();
 
@@ -39,8 +41,9 @@ void main() {
     });
 
     test('should return NetworkFailure when no connectivity', () async {
-      when(() => mockRepository.getExamples())
-          .thenAnswer((_) async => left(const NetworkFailure('Pas de réseau')));
+      when(
+        () => mockRepository.getExamples(),
+      ).thenAnswer((_) async => left(const NetworkFailure('Pas de réseau')));
 
       final result = await useCase();
 
@@ -52,8 +55,7 @@ void main() {
     });
 
     test('should delegate call to repository exactly once', () async {
-      when(() => mockRepository.getExamples())
-          .thenAnswer((_) async => right([]));
+      when(() => mockRepository.getExamples()).thenAnswer((_) async => right([]));
 
       await useCase();
 

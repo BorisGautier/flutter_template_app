@@ -17,11 +17,7 @@ void main() {
     testWidgets('le framework Flutter est opérationnel', (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: Text('Flutter Template — OK'),
-            ),
-          ),
+          home: Scaffold(body: Center(child: Text('Flutter Template — OK'))),
         ),
       );
 
@@ -33,10 +29,7 @@ void main() {
         MaterialApp(
           home: Scaffold(
             appBar: AppBar(title: const Text('Test')),
-            body: ElevatedButton(
-              onPressed: () {},
-              child: const Text('Bouton'),
-            ),
+            body: ElevatedButton(onPressed: () {}, child: const Text('Bouton')),
           ),
         ),
       );

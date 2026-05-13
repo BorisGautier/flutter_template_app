@@ -10,8 +10,7 @@ import '../features/example/presentation/pages/example_detail_page.dart';
 // TODO: [TEMPLATE] Remplacer les routes d'exemple par vos propres routes.
 // Pour ajouter une route : ajouter un GoRoute dans la liste routes.
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
@@ -27,10 +26,7 @@ final appRouter = GoRouter(
     return null;
   },
   routes: [
-    GoRoute(
-      path: RouteConstants.splash,
-      builder: (context, state) => const _SplashPage(),
-    ),
+    GoRoute(path: RouteConstants.splash, builder: (context, state) => const _SplashPage()),
     GoRoute(
       path: RouteConstants.login,
       builder: (context, state) => const _PlaceholderPage(title: 'Connexion'),

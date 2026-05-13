@@ -7,7 +7,10 @@ import 'app_typography.dart';
 // Désactiver : retirer les références à AppTheme dans main.dart et fournir votre propre ThemeData.
 class AppTheme {
   static ThemeData lightTheme([String? fontFamily]) {
-    final textTheme = AppTypography.getTextTheme(Brightness.light, fontFamily ?? AppTypography.fontFamily);
+    final textTheme = AppTypography.getTextTheme(
+      Brightness.light,
+      fontFamily ?? AppTypography.fontFamily,
+    );
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -46,7 +49,11 @@ class AppTheme {
         backgroundColor: AppColors.surface,
         indicatorColor: AppColors.primary.withValues(alpha: 0.1),
         labelTextStyle: WidgetStateProperty.all(
-          TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: fontFamily ?? AppTypography.fontFamily),
+          TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            fontFamily: fontFamily ?? AppTypography.fontFamily,
+          ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -63,16 +70,31 @@ class AppTheme {
         filled: true,
         fillColor: const Color(0xFFF3F4F6),
         contentPadding: const EdgeInsets.all(16),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.outline)),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.outline)),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.primary, width: 2)),
-        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.error)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.outline),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error),
+        ),
       ),
     );
   }
 
   static ThemeData darkTheme([String? fontFamily]) {
-    final textTheme = AppTypography.getTextTheme(Brightness.dark, fontFamily ?? AppTypography.fontFamily);
+    final textTheme = AppTypography.getTextTheme(
+      Brightness.dark,
+      fontFamily ?? AppTypography.fontFamily,
+    );
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -114,7 +136,11 @@ class AppTheme {
         backgroundColor: AppColors.surfaceDark,
         indicatorColor: AppColors.primaryDarkTheme.withValues(alpha: 0.1),
         labelTextStyle: WidgetStateProperty.all(
-          TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: fontFamily ?? AppTypography.fontFamily),
+          TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            fontFamily: fontFamily ?? AppTypography.fontFamily,
+          ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -131,10 +157,22 @@ class AppTheme {
         filled: true,
         fillColor: AppColors.surfaceDark,
         contentPadding: const EdgeInsets.all(16),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.15))),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.15))),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.primaryDarkTheme, width: 2)),
-        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.error)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.15)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.15)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.primaryDarkTheme, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.error),
+        ),
       ),
     );
   }

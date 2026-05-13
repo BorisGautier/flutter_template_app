@@ -10,8 +10,7 @@ import 'package:flutter_template_app/features/example/presentation/pages/example
 
 import '../../../../helpers/test_data.dart';
 
-class _MockExampleBloc extends MockBloc<ExampleEvent, ExampleState>
-    implements ExampleBloc {}
+class _MockExampleBloc extends MockBloc<ExampleEvent, ExampleState> implements ExampleBloc {}
 
 void main() {
   late _MockExampleBloc mockBloc;
@@ -27,8 +26,7 @@ void main() {
   Widget buildApp() => const MaterialApp(home: ExampleListPage());
 
   group('ExampleListPage', () {
-    testWidgets('affiche AppLoading quand le statut est initial',
-        (tester) async {
+    testWidgets('affiche AppLoading quand le statut est initial', (tester) async {
       when(() => mockBloc.state).thenReturn(const ExampleState());
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
@@ -38,10 +36,8 @@ void main() {
       expect(find.byType(ListView), findsNothing);
     });
 
-    testWidgets('affiche AppLoading quand le statut est loading',
-        (tester) async {
-      when(() => mockBloc.state)
-          .thenReturn(const ExampleState(status: ExampleStatus.loading));
+    testWidgets('affiche AppLoading quand le statut est loading', (tester) async {
+      when(() => mockBloc.state).thenReturn(const ExampleState(status: ExampleStatus.loading));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(buildApp());
@@ -49,14 +45,10 @@ void main() {
       expect(find.byType(AppLoading), findsOneWidget);
     });
 
-    testWidgets('affiche la liste quand le statut est success',
-        (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        ExampleState(
-          status: ExampleStatus.success,
-          items: TestData.tExampleEntities,
-        ),
-      );
+    testWidgets('affiche la liste quand le statut est success', (tester) async {
+      when(
+        () => mockBloc.state,
+      ).thenReturn(ExampleState(status: ExampleStatus.success, items: TestData.tExampleEntities));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(buildApp());
@@ -68,10 +60,8 @@ void main() {
       expect(find.text(TestData.tExampleEntities[1].title), findsOneWidget);
     });
 
-    testWidgets('affiche une liste vide quand success sans items',
-        (tester) async {
-      when(() => mockBloc.state)
-          .thenReturn(const ExampleState(status: ExampleStatus.success));
+    testWidgets('affiche une liste vide quand success sans items', (tester) async {
+      when(() => mockBloc.state).thenReturn(const ExampleState(status: ExampleStatus.success));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(buildApp());
@@ -80,13 +70,9 @@ void main() {
       expect(find.byType(ListTile), findsNothing);
     });
 
-    testWidgets('affiche AppErrorView avec le message quand failure',
-        (tester) async {
+    testWidgets('affiche AppErrorView avec le message quand failure', (tester) async {
       when(() => mockBloc.state).thenReturn(
-        const ExampleState(
-          status: ExampleStatus.failure,
-          errorMessage: 'Erreur réseau',
-        ),
+        const ExampleState(status: ExampleStatus.failure, errorMessage: 'Erreur réseau'),
       );
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
@@ -97,10 +83,8 @@ void main() {
       expect(find.byType(ListView), findsNothing);
     });
 
-    testWidgets('affiche le message par défaut si errorMessage est null',
-        (tester) async {
-      when(() => mockBloc.state)
-          .thenReturn(const ExampleState(status: ExampleStatus.failure));
+    testWidgets('affiche le message par défaut si errorMessage est null', (tester) async {
+      when(() => mockBloc.state).thenReturn(const ExampleState(status: ExampleStatus.failure));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(buildApp());
@@ -109,14 +93,10 @@ void main() {
       expect(find.text('Une erreur est survenue'), findsOneWidget);
     });
 
-    testWidgets('le bouton refresh émet ExampleRefreshRequested',
-        (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        ExampleState(
-          status: ExampleStatus.success,
-          items: TestData.tExampleEntities,
-        ),
-      );
+    testWidgets('le bouton refresh émet ExampleRefreshRequested', (tester) async {
+      when(
+        () => mockBloc.state,
+      ).thenReturn(ExampleState(status: ExampleStatus.success, items: TestData.tExampleEntities));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(buildApp());
