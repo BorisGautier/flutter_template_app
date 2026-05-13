@@ -47,6 +47,9 @@ macos/Flutter/GeneratedPluginRegistrant.swift
 # Coverage
 coverage/
 
+# Android local properties
+android/local.properties
+
 # Pub cache
 .pub-cache/
 .pub/
