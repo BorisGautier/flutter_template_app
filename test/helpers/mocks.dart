@@ -9,8 +9,13 @@ import 'package:flutter_template_app/features/example/presentation/bloc/example_
 // Mocks centralisés — importer dans les tests avec :
 // import '../../helpers/mocks.dart';
 class MockExampleRepository extends Mock implements ExampleRepository {}
-class MockExampleRemoteDataSource extends Mock implements ExampleRemoteDataSource {}
+
+class MockExampleRemoteDataSource extends Mock
+    implements ExampleRemoteDataSource {}
+
 class MockNetworkInfo extends Mock implements NetworkInfo {}
+
 class MockGetExamplesUseCase extends Mock implements GetExamplesUseCase {}
+
 class MockExampleBloc extends MockBloc<ExampleEvent, ExampleState>
     implements ExampleBloc {}

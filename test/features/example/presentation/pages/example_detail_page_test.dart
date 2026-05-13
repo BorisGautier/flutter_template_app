@@ -2,9 +2,9 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:flutter_template_app/di/injection.dart';
 import 'package:flutter_template_app/features/example/presentation/bloc/example_bloc.dart';
 import 'package:flutter_template_app/features/example/presentation/pages/example_detail_page.dart';
-import 'package:flutter_template_app/di/injection.dart';
 
 import '../../../../helpers/test_data.dart';
 
@@ -23,7 +23,9 @@ void main() {
   tearDown(getIt.reset);
 
   group('ExampleDetailPage', () {
-    testWidgets('affiche le titre et la description de l\'élément trouvé', (tester) async {
+    testWidgets(
+        'affiche le titre et la description de l\'élément trouvé',
+        (tester) async {
       when(() => mockBloc.state).thenReturn(
         ExampleState(
           status: ExampleStatus.success,
@@ -62,7 +64,8 @@ void main() {
       expect(find.text(TestData.tExampleEntity.title), findsNothing);
     });
 
-    testWidgets('affiche "Element non trouvé" si l\'id est absent', (tester) async {
+    testWidgets('affiche "Element non trouvé" si l\'id est absent',
+        (tester) async {
       when(() => mockBloc.state).thenReturn(
         const ExampleState(
           status: ExampleStatus.success,
@@ -80,10 +83,10 @@ void main() {
       expect(find.text('Element non trouvé'), findsOneWidget);
     });
 
-    testWidgets('affiche "Element non trouvé" quand la liste est vide', (tester) async {
-      when(() => mockBloc.state).thenReturn(
-        const ExampleState(status: ExampleStatus.initial),
-      );
+    testWidgets('affiche "Element non trouvé" quand la liste est vide',
+        (tester) async {
+      when(() => mockBloc.state)
+          .thenReturn(const ExampleState(status: ExampleStatus.initial));
       when(() => mockBloc.stream).thenAnswer((_) => const Stream.empty());
 
       await tester.pumpWidget(

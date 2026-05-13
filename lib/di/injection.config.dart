@@ -45,10 +45,12 @@ extension GetItInjectableX on GetIt {
     gh.lazySingleton<NotificationService>(() => NotificationService());
     gh.lazySingleton<ExampleRemoteDataSource>(
         () => ExampleRemoteDataSource());
-    gh.lazySingleton<ExampleRepository>(() => ExampleRepositoryImpl(
-          gh<ExampleRemoteDataSource>(),
-          gh<NetworkInfo>(),
-        ));
+    gh.lazySingleton<ExampleRepository>(
+      () => ExampleRepositoryImpl(
+        gh<ExampleRemoteDataSource>(),
+        gh<NetworkInfo>(),
+      ),
+    );
     gh.lazySingleton<GetExamplesUseCase>(
         () => GetExamplesUseCase(gh<ExampleRepository>()));
     gh.factory<ExampleBloc>(
