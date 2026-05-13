@@ -113,6 +113,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
 
   # === GÉNÉRATION DE CODE ===
   # Les fichiers générés (*.g.dart, injection.config.dart) sont committés.

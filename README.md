@@ -29,19 +29,19 @@ make run-dev      # l'app tourne
 Ce template fournit un socle Flutter de niveau production, prêt à l'emploi dès le `git clone`. Il intègre :
 
 | Catégorie | Solution |
-|-----------|-----------|
+|-----------|----------|
 | **Architecture** | Clean Architecture (Domain / Data / Presentation) feature-first |
 | **État** | BLoC avec pattern loading / success / failure |
 | **Navigation** | GoRouter — deep links, guards, routes imbriquées |
 | **HTTP** | Chopper — intercepteurs JWT, refresh token automatique (401) |
 | **Base de données** | Drift (ORM SQLite) + flutter_secure_storage |
-| **DI** | GetIt + Injectable — singletons, modules, code généré commité |
+| **DI** | GetIt + Injectable — singletons, modules, code généré committé |
 | **Firebase** | Crashlytics, Messaging, Auth, Performance |
 | **i18n** | flutter_localizations — ARB, Français + Anglais |
 | **Thème** | Material 3 clair/sombre — police Outfit, palette centralisée |
-| **Tests** | bloc_test + mocktail — 47 tests, politique de couverture |
+| **Tests** | bloc_test + mocktail — 58 tests (unit + widget), politique de couverture |
 | **CI/CD** | GitHub Actions — analyze, test, release Android/iOS |
-| **Automatisation** | Makefile 18 cibles, scripts bash, hook pre-commit |
+| **Automatisation** | Makefile 20 cibles, scripts bash, hook pre-commit |
 
 ---
 
@@ -98,7 +98,7 @@ lib/
 | Graphiques | fl_chart / confetti | ^0.68.0 / ^0.8.0 |
 | Programmation fonctionnelle | fpdart | ^1.2.0 |
 | Variables d'env | flutter_dotenv | ^6.0.0 |
-| Télémetrie | opentelemetry | any |
+| Télémétrie | opentelemetry | any |
 | Tests | bloc_test + mocktail | ^10.0.0 / ^1.0.4 |
 
 ---
@@ -208,12 +208,17 @@ Mode clair/sombre configuré dans `main.dart` via `themeMode: ThemeMode.system`.
 ## 🧪 Tests
 
 ```bash
-make test              # Tous les tests + couverture
+make test              # Tests unitaires + widget + couverture
 make test-watch        # Mode watch
 make check             # lint + format + tests (pipeline CI local)
+make coverage          # Rapport HTML de couverture (nécessite lcov)
+make coverage-open     # Tests + rapport + ouverture navigateur
+
+# Tests d'intégration (nécessite un émulateur/appareil + .env configuré)
+flutter test integration_test/ --dart-define=APP_ENV=development
 ```
 
-**État actuel : 47/47 tests ✅**
+**État actuel : 58/58 tests unitaires et widget ✅** (47 unit + 11 widget)
 
 → Voir [docs/TESTING.md](docs/TESTING.md) pour la stratégie complète et les exemples.
 
@@ -236,20 +241,22 @@ Configurer les secrets GitHub nécessaires → [docs/DEPLOYMENT.md](docs/DEPLOYM
 ## 📋 Makefile — commandes disponibles
 
 ```bash
-make help          # Lister toutes les commandes
-make setup         # Installation complète
-make rename        # Renommer l'app
-make set-env       # Créer .env depuis .env.example
-make install       # flutter pub get
-make codegen       # Génération de code (one-shot)
-make run-dev       # Lancer en développement
-make analyze       # Analyse statique
-make format        # Formater le code
-make test          # Tests + couverture
-make check         # lint + tests (CI local)
+make help           # Lister toutes les commandes
+make setup          # Installation complète
+make rename         # Renommer l'app
+make set-env        # Créer .env depuis .env.example
+make install        # flutter pub get
+make codegen        # Génération de code (one-shot)
+make run-dev        # Lancer en développement
+make analyze        # Analyse statique
+make format         # Formater le code
+make test           # Tests + couverture
+make coverage       # Rapport HTML de couverture
+make coverage-open  # Tests + rapport + ouverture navigateur
+make check          # lint + tests (CI local)
 make build-aab-prod # Android App Bundle production
-make clean         # flutter clean
-make clean-full    # clean + install + codegen
+make clean          # flutter clean
+make clean-full     # clean + install + codegen
 ```
 
 ---
