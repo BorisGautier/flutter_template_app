@@ -1,11 +1,11 @@
 .PHONY: help setup install codegen codegen-watch run-dev run-staging run-prod \
-        analyze format test test-watch lint check rename set-env \
+        analyze format test test-watch coverage coverage-open lint check rename set-env \
         build-apk-dev build-apk-prod build-aab-prod build-ios-dev build-ios-prod \
         clean clean-full deploy-android deploy-ios
 
 # Affiche l'aide
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-22s\033[0m %s\n", $$1, $$2}'
 
 # === SETUP ===
 setup: ## Installation complète depuis zéro (deps + codegen + hooks git)
@@ -46,6 +46,15 @@ test: ## Lancer tous les tests avec couverture
 
 test-watch: ## Lancer les tests en mode watch
 	flutter test --watch
+
+coverage: ## Tests + rapport HTML de couverture (nécessite lcov : brew/apt install lcov)
+	flutter test --coverage
+	genhtml coverage/lcov.info -o coverage/html --quiet
+	@echo "\n\033[32m✓ Rapport disponible dans coverage/html/index.html\033[0m"
+
+coverage-open: coverage ## Tests + rapport HTML + ouverture dans le navigateur
+	@open coverage/html/index.html 2>/dev/null || xdg-open coverage/html/index.html 2>/dev/null || \
+	  echo "Ouvrir manuellement : coverage/html/index.html"
 
 lint: analyze format-check ## Analyse + vérification formatage
 
