@@ -30,11 +30,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Check formatting
+        run: dart format . --line-length 100 --set-exit-if-changed
+
       - name: Generate code (build_runner)
         run: dart run build_runner build --delete-conflicting-outputs
 
-      - name: Check formatting
-        run: dart format . --line-length 100 --set-exit-if-changed
+      - name: Create .env for analyze
+        run: cp .env.example .env
 
       - name: Analyze (fatal warnings)
         run: flutter analyze --fatal-warnings
@@ -65,7 +68,7 @@ jobs:
       - name: Run tests with coverage
         run: flutter test --coverage --reporter=github
 
-      - name: Vérifier le seuil de couverture (≥ 70 %)
+      - name: Vérifier le seuil de couverture (≥ 70 %)
         run: |
           python3 << 'EOF'
           import re, sys

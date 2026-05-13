@@ -26,10 +26,13 @@ jobs:
       - name: Check formatting
         run: dart format . --line-length 100 --set-exit-if-changed
 
+      - name: Create .env for analyze
+        run: cp .env.example .env
+
       - name: Analyze
         run: flutter analyze --fatal-warnings
 
-  # Vérifie qu'aucun secret n'a été commité
+  # Vérifie qu'aucun secret n'a été committé
   secret-scan:
     name: Secret Detection
     runs-on: ubuntu-latest

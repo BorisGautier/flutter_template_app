@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template_app/core/error/failure.dart';
 import 'package:flutter_template_app/features/example/data/repositories/example_repository_impl.dart';
 
