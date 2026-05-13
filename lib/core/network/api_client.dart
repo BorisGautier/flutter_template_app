@@ -17,11 +17,11 @@ class AppApiClient {
       baseUrl: Uri.parse(baseUrl),
       interceptors: [AuthInterceptor(), HttpLoggingInterceptor()],
       authenticator: AppAuthenticator(),
-      converter: JsonToTypeConverter({
+      converter: const JsonToTypeConverter({
         // TODO: [TEMPLATE] Enregistrer ici vos modèles de réponse JSON
         // ExampleModel: (json) => ExampleModel.fromJson(json),
       }),
-      errorConverter: JsonToTypeConverter({}),
+      errorConverter: const JsonToTypeConverter({}),
     );
   }
 }

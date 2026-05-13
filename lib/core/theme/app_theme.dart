@@ -99,7 +99,7 @@ class AppTheme {
       useMaterial3: true,
       brightness: Brightness.dark,
       fontFamily: fontFamily ?? AppTypography.fontFamily,
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: AppColors.primaryDarkTheme,
         onPrimary: AppColors.backgroundDark,
         secondary: AppColors.secondary,
