@@ -86,7 +86,7 @@ jobs:
       #   APP_STORE_CONNECT_API_ISSUER_ID      : Issuer ID
       #   APP_STORE_CONNECT_API_KEY_CONTENT    : contenu brut de la clé .p8 (pas base64)
       - name: Upload to TestFlight / App Store
-        uses: apple-actions/upload-testflight-build@v3
+        uses: apple-actions/upload-testflight-build@v5
         with:
           app-path: build/ios/ipa/*.ipa
           issuer-id: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
