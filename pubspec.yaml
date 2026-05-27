@@ -33,7 +33,7 @@ dependencies:
   # === BASE DE DONNÉES & STOCKAGE LOCAL ===
   drift: ^2.21.0             # ORM SQLite avec génération de code
   drift_flutter: ^0.2.7      # Intégration Drift/Flutter
-  flutter_secure_storage: ^10.0.0  # Stockage chiffré (tokens)
+  flutter_secure_storage: ^10.3.1  # Stockage chiffré (tokens)
   shared_preferences: ^2.5.4 # Préférences utilisateur simples
 
   # === FIREBASE & NOTIFICATIONS ===
