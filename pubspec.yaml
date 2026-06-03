@@ -18,7 +18,7 @@ dependencies:
   equatable: ^2.0.8          # Comparaison d'états sans boilerplate
 
   # === NAVIGATION ===
-  go_router: ^17.1.0         # Routeur déclaratif avec deep links
+  go_router: ^17.3.0         # Routeur déclaratif avec deep links
 
   # === INJECTION DE DÉPENDANCES ===
   get_it: ^9.2.0             # Service locator
