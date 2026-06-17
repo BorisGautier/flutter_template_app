@@ -94,7 +94,7 @@ dependencies:
   speech_to_text: ^7.3.0
 
   # === PDF & QR ===
-  pdf: ^3.11.3
+  pdf: ^3.13.0
   printing: ^5.14.2
   qr_flutter: ^4.1.0
 
