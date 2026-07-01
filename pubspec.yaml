@@ -87,7 +87,7 @@ dependencies:
 
   # === SERVICES NATIFS ===
   permission_handler: ^12.0.1
-  image_picker: ^1.2.1
+  image_picker: ^1.2.3
   file_picker: ^10.3.8
   record: ^6.2.0
   audioplayers: ^6.1.0
