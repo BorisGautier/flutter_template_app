@@ -39,7 +39,7 @@ dependencies:
   # === FIREBASE & NOTIFICATIONS ===
   firebase_core: ^4.9.0
   firebase_messaging: ^16.2.2
-  firebase_auth: ^6.5.1
+  firebase_auth: ^6.5.4
   firebase_crashlytics: ^5.2.2
   firebase_performance: ^0.11.1+3
   flutter_local_notifications: ^18.0.1
@@ -47,7 +47,7 @@ dependencies:
   # === AUTHENTIFICATION SOCIALE ===
   google_sign_in: ^7.2.0
   sign_in_with_apple: ^6.1.1
-  local_auth: ^3.0.0         # Biométrie
+  local_auth: ^3.0.2         # Biométrie
 
   # === UI & DESIGN ===
   google_fonts: ^8.0.1
