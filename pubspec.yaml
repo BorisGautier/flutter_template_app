@@ -47,7 +47,7 @@ dependencies:
   # === AUTHENTIFICATION SOCIALE ===
   google_sign_in: ^7.2.0
   sign_in_with_apple: ^6.1.1
-  local_auth: ^3.0.0         # Biométrie
+  local_auth: ^3.0.2         # Biométrie
 
   # === UI & DESIGN ===
   google_fonts: ^8.0.1
