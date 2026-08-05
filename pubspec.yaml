@@ -25,7 +25,7 @@ dependencies:
   injectable: ^2.7.1+4       # Annotations DI + génération de code
 
   # === RÉSEAU ===
-  chopper: ^8.5.1            # Client HTTP + intercepteurs
+  chopper: ^8.7.0            # Client HTTP + intercepteurs
   http: ^1.6.0               # Client HTTP de base
   http_parser: ^4.1.2        # Parseur HTTP
   internet_connection_checker: ^3.0.1  # Détection connectivité
